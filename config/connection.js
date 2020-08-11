@@ -1,13 +1,15 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
-const dotenv = require('dotenv');
+require("dotenv").config();
+
+const db_pw = process.env.DB_PASSWORD;
 
 // create the connection information for the sql database
 const connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
   user: 'root',
-  password: process.env.DB_PASSWORD,
+  password: db_pw || '',
   database: 'employees_DB'
 });
 
